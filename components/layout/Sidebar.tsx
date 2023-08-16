@@ -2,6 +2,7 @@ import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import SidebarLogo from "./SidebarLogo";
 import SidebarItem from "./SidebarItem";
+import SidebarPostButton from "./SidebarPostButton";
 import { BiLogOut } from "react-icons/bi";
 
 const Sidebar = () => {
