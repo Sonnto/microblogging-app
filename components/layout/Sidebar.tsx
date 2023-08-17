@@ -1,26 +1,48 @@
-import { BsHouseFill, BsBellFill } from "react-icons/bs";
-import { FaUser } from "react-icons/fa";
+import {
+  BiBell,
+  BiEnvelope,
+  BiHome,
+  BiListUl,
+  BiLogOut,
+  BiSearch,
+  BiUser,
+} from "react-icons/bi";
+import { FaUserCircle } from "react-icons/fa";
 import SidebarLogo from "./SidebarLogo";
 import SidebarItem from "./SidebarItem";
 import SidebarPostButton from "./SidebarPostButton";
-import { BiLogOut } from "react-icons/bi";
 
 const Sidebar = () => {
   const items = [
     {
       label: "Home",
       href: "/",
-      icon: BsHouseFill,
+      icon: BiHome,
+    },
+    {
+      label: "Explore",
+      href: "/explore",
+      icon: BiSearch,
     },
     {
       label: "Notifications",
       href: "/notifications",
-      icon: BsBellFill,
+      icon: BiBell,
+    },
+    {
+      label: "Messages",
+      href: "/messages",
+      icon: BiEnvelope,
+    },
+    {
+      label: "Lists",
+      href: "/lists",
+      icon: BiListUl,
     },
     {
       label: "Profile",
       href: "/users/123",
-      icon: FaUser,
+      icon: BiUser,
     },
   ];
   return (
