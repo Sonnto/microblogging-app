@@ -120,7 +120,7 @@ const Modal: React.FC<ModalProps> = ({
                 large
                 onClick={handleSubmit}
               />
-              {/* 45:07 */}
+              {footer}
             </div>
           </div>
         </div>
