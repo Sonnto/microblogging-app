@@ -2,7 +2,7 @@ interface InputProps {
   placeholder?: string;
   value?: string;
   type?: string;
-  disabled?: ConstrainBooleanParameters;
+  disabled?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
