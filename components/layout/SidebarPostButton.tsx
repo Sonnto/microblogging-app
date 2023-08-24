@@ -1,10 +1,19 @@
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import { BsPencilSquare } from "react-icons/bs";
+
+import useLoginModal from "@/hooks/useLoginModal";
 
 const SidebarPostButton = () => {
   const router = useRouter();
+  const loginModal = useLoginModal();
+
+  const onClick = useCallback(() => {
+    loginModal.onOpen();
+  }, [loginModal]);
+
   return (
-    <div onClick={() => router.push("/")}>
+    <div onClick={onClick}>
       <div className="mt-6 lg:hidden rounded-full h-14 w-14 p-4 flex items-venter justify-center bg-sky-500 hover:bg-opacity-80 transition cursor-pointer">
         <BsPencilSquare size={24} color="white" />
       </div>
