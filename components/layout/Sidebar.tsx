@@ -11,8 +11,12 @@ import { FaUserCircle } from "react-icons/fa";
 import SidebarLogo from "./SidebarLogo";
 import SidebarItem from "./SidebarItem";
 import SidebarPostButton from "./SidebarPostButton";
+import useCurrentUser from "@/hooks/useCurrentUser";
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
+  const { data: currentUser } = useCurrentUser();
+  // Check if user is logged in to hide/show log out button
   const items = [
     {
       label: "Home",
@@ -41,7 +45,7 @@ const Sidebar = () => {
     },
     {
       label: "Profile",
-      href: "/users/123",
+      href: `/users/$currentUser?.username`,
       icon: BiUser,
     },
   ];
@@ -58,7 +62,14 @@ const Sidebar = () => {
               icon={item.icon}
             />
           ))}
-          <SidebarItem onClick={() => {}} icon={BiLogOut} label="Logout" />
+          {currentUser && (
+            // Logout button available only if user is logged in
+            <SidebarItem
+              onClick={() => signOut()}
+              icon={BiLogOut}
+              label="Logout"
+            />
+          )}
           <SidebarPostButton />
         </div>
       </div>
