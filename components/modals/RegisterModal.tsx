@@ -59,24 +59,28 @@ const RegisterModal = () => {
         placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
         value={username}
+        type="alphanumeric"
         disabled={isLoading}
       />
       <Input
         placeholder="Name"
         onChange={(e) => setName(e.target.value)}
         value={name}
+        type="text"
         disabled={isLoading}
       />
       <Input
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        type="email"
         disabled={isLoading}
       />
       <Input
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
+        type="password"
         disabled={isLoading}
       />
     </div>
