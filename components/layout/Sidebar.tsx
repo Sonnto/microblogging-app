@@ -27,26 +27,31 @@ const Sidebar = () => {
       label: "Explore",
       href: "/explore",
       icon: BiSearch,
+      auth: true,
     },
     {
       label: "Notifications",
       href: "/notifications",
       icon: BiBell,
+      auth: true,
     },
     {
       label: "Messages",
       href: "/messages",
       icon: BiEnvelope,
+      auth: true,
     },
     {
       label: "Lists",
       href: "/lists",
       icon: BiListUl,
+      auth: true,
     },
     {
       label: "Profile",
       href: `/users/$currentUser?.username`,
       icon: BiUser,
+      auth: true,
     },
   ];
   return (
@@ -60,6 +65,7 @@ const Sidebar = () => {
               href={item.href}
               label={item.label}
               icon={item.icon}
+              auth={item.auth}
             />
           ))}
           {currentUser && (
