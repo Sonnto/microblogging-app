@@ -8,6 +8,9 @@ const useUser = (userId: string) => {
   // Fetch user data using the useSWR hook.
   const { data, error, isLoading, mutate } = useSWR(
     // Construct the API endpoint URL for the specified user ID.
+    // If 'userId' is available (not null), fetch data for that specific user.
+    // If 'userId' is null, no specific user ID is provided, so no data is fetched.
+    // 'fetcher' is the function responsible for making the data request.
     userId ? `/api/users/${userId}` : null,
     fetcher
   );
