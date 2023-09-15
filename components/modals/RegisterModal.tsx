@@ -31,7 +31,7 @@ const RegisterModal = () => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      /* TODO: ADD REGISTER & LOGIN HERE */
+
       await axios.post("/api/register", {
         username,
         name,
