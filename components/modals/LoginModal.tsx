@@ -2,6 +2,8 @@ import useLoginModal from "@/hooks/useLoginModal";
 import useRegisterModal from "@/hooks/useRegisterModal";
 
 import { useCallback, useState } from "react";
+import { signIn } from "next-auth/react"; // Import the signIn function from next-auth/react
+import toast from "react-hot-toast";
 
 import Input from "../Input";
 import Modal from "../Modal";
@@ -16,44 +18,32 @@ const LoginModal = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Function to switch to the registration modal
-  const onToggle = useCallback(() => {
-    if (isLoading) {
-      return;
-    }
-
-    // Close the login modal and open the registration modal
-    loginModal.onClose();
-    registerModal.onOpen();
-  }, [isLoading, registerModal, loginModal]);
-
   // Function to handle form submission (login)
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      // TODO: Add login logic here
-      // send a POST request to your authentication API endpoint
-      // with the user's email and password and handle the response
+      // Use the signIn function to attempt user login with credentials
+      await signIn("credentials", {
+        email,
+        password,
+      });
 
-      // After a successful login, you can set user authentication state and close the modal
+      toast.success("Logged in");
 
-      // Also, consider storing authentication tokens securely
-      // and handling user state in your application context
-
-      // For now, simulate a successful login for demonstration purposes
-
-      setTimeout(() => {
-        // Simulating a successful login after 2 seconds
-        loginModal.onClose();
-      }, 2000);
       loginModal.onClose();
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [email, password, loginModal]);
+
+  // Function to toggle between login and registration modals
+  const onToggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   // JSX content for the modal's body (input fields)
   const bodyContent = (
