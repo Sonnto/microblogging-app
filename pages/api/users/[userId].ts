@@ -17,7 +17,7 @@ export default async function handler(
 
   try {
     // Retrieve the user ID from the request query parameters.
-    const userId = req.query;
+    const userId = req.query.userId;
 
     // Check if userId is missing or not a string.
     if (!userId || typeof userId !== "string") {
