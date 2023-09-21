@@ -4,6 +4,7 @@ import useUser from "@/hooks/useUser";
 import { useMemo } from "react";
 import Button from "../Button";
 import { BiCalendar } from "react-icons/bi";
+import useEditModal from "@/hooks/useEditModal";
 
 interface UserBioProps {
   userId: string;
@@ -15,6 +16,8 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
 
   // Fetch user data for the specified 'userId' using the custom 'useUser' hook.
   const { data: fetchedUser } = useUser(userId);
+
+  const editModal = useEditModal();
 
   // Calculate the 'createdAt' date in a formatted manner using 'useMemo'.
   const createdAt = useMemo(() => {
@@ -29,7 +32,7 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
       <div className="flex justify-end p-2">
         {/* Conditionally render "Edit Profile" button for the current user or "Follow" button for others */}
         {currentUser?.id === userId ? (
-          <Button secondary label="Edit Profile" onClick={() => {}} />
+          <Button secondary label="Edit Profile" onClick={editModal.onOpen} />
         ) : (
           <Button secondary label="Follow" onClick={() => {}} />
         )}
