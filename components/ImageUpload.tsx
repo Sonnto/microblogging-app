@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import Image from "next/image";
 
 // Define a TypeScript interface to specify the props that the ImageUpload component expects.
-interface ImageUploadProps {
+interface DropzoneProps {
   // Function to handle changes when an image is uploaded.
   onChange: (base64: string) => void;
   // Label to display when no image is uploaded.
@@ -15,7 +15,7 @@ interface ImageUploadProps {
 }
 
 // Create a React functional component called ImageUpload that receives props as parameters.
-const ImageUpload: React.FC<ImageUploadProps> = ({
+const ImageUpload: React.FC<DropzoneProps> = ({
   onChange,
   label,
   value,
@@ -54,7 +54,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 1, // Allow only one file to be uploaded.
     onDrop: handleDrop, // Specify the function to handle the dropped file.
-    disabled: disabled, // Determine whether the image upload is disabled.
+    disabled, // Determine whether the image upload is disabled.
     accept: {
       "image/jpeg": [],
       "image/png": [],

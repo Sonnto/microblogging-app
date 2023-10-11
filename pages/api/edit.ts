@@ -16,7 +16,7 @@ export default async function handler(
 
   try {
     // Authenticate the user and retrieve their information.
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth(req, res);
 
     // Destructure user data from the request body.
     const { name, username, bio, profileImage, coverImage } = req.body;
